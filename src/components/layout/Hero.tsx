@@ -123,9 +123,9 @@ export default function MacaneyHeroSlider() {
                 className="object-cover object-center"
               />
             )}
-            {/* Centered vignette overlay for desktop balance */}
-            <div className="absolute inset-0 bg-stone-950/75 md:bg-stone-950/65" />
-            <div className="absolute inset-0 bg-linear-to-t from-stone-950 via-stone-950/40 to-stone-900/30" />
+            {/* Lighter overlay for clarity and brightness */}
+            <div className="absolute inset-0 bg-stone-950/45 md:bg-stone-950/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
           </div>
         );
       })}
@@ -150,11 +150,11 @@ export default function MacaneyHeroSlider() {
 
         {/* Center Content Section - Fully Centered for both mobile and desktop */}
         <div key={currentSlide} className="max-w-3xl mx-auto text-center my-auto space-y-6 animate-content">
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-white leading-[1.15]">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-white leading-[1.15] drop-shadow-md">
             {activeSlide.title}
           </h1>
 
-          <p className="text-sm sm:text-base text-stone-200 font-normal leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-stone-100 font-normal leading-relaxed max-w-2xl mx-auto drop-shadow">
             {activeSlide.subtitle}
           </p>
 
@@ -168,7 +168,7 @@ export default function MacaneyHeroSlider() {
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs uppercase tracking-wider transition-all backdrop-blur-md rounded-xl"
+              className="inline-flex items-center justify-center px-6 py-3.5 bg-stone-900/60 hover:bg-stone-900/80 border border-white/30 text-white font-semibold text-xs uppercase tracking-wider transition-all backdrop-blur-md rounded-xl shadow-md"
             >
               Explore Services
             </Link>
@@ -185,8 +185,8 @@ export default function MacaneyHeroSlider() {
                 <div className="h-8 w-8 rounded-full ring-2 ring-stone-950 bg-green-600 flex items-center justify-center font-bold text-[10px] text-white">AO</div>
                 <div className="h-8 w-8 rounded-full ring-2 ring-stone-950 bg-amber-300 flex items-center justify-center font-bold text-[10px] text-stone-950">KA</div>
               </div>
-              <div className="text-xs text-stone-300">
-                <span className="font-bold text-white block">10K+ Beekeepers Trained</span>
+              <div className="text-xs text-stone-200">
+                <span className="font-bold text-white block drop-shadow-sm">10K+ Beekeepers Trained</span>
                 <span className="text-amber-400 font-medium">Join Africa’s leading apiary network</span>
               </div>
             </div>
@@ -197,7 +197,7 @@ export default function MacaneyHeroSlider() {
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
-                    className="h-1 flex-1 bg-white/20 rounded-full overflow-hidden transition-all"
+                    className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden transition-all"
                     aria-label={`Go to slide ${idx + 1}`}
                   >
                     <div
@@ -216,7 +216,7 @@ export default function MacaneyHeroSlider() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all"
+                  className="p-2 rounded-full bg-stone-900/60 hover:bg-stone-900/90 backdrop-blur-md text-white transition-all border border-white/20"
                   aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
                 >
                   {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -225,14 +225,14 @@ export default function MacaneyHeroSlider() {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={prevSlide}
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all"
+                    className="p-2 rounded-full bg-stone-900/60 hover:bg-stone-900/90 backdrop-blur-md text-white transition-all border border-white/20"
                     aria-label="Previous slide"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all"
+                    className="p-2 rounded-full bg-stone-900/60 hover:bg-stone-900/90 backdrop-blur-md text-white transition-all border border-white/20"
                     aria-label="Next slide"
                   >
                     <ChevronRight className="w-3.5 h-3.5" />
