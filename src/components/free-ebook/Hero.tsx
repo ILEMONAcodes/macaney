@@ -1,17 +1,29 @@
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
 import { LeadForm } from '@/components/free-ebook/LeadForm';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#fdfbf7] text-stone-900 py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-100/40 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-[#fdfbf7] text-stone-900 py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+      {/* Removed the top background blur element */}
 
       <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Return to Main Website Link */}
+        <div className="mb-3 sm:mb-4">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-stone-600 hover:text-amber-600 transition-colors bg-white border border-stone-200 px-4 py-2 rounded-xl shadow-xs group"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <span>Return to Main Website</span>
+          </Link>
+        </div>
 
-        <div className="relative bg-white/80 backdrop-blur-md border border-amber-100 shadow-2xl rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-12 lg:p-16 overflow-visible">
+        <div className="relative bg-white border border-amber-100 shadow-2xl rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-12 lg:p-16 overflow-visible">
 
-          <div className="absolute -top-24 -left-24 w-72 h-72 bg-amber-50 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-amber-100/50 rounded-full blur-2xl pointer-events-none" />
 
           <div className="absolute top-2 right-4 sm:top-4 sm:right-8 lg:right-12 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none animate-bee-flight z-30 drop-shadow-2xl">
@@ -32,7 +44,7 @@ export function Hero() {
               <div className="flex flex-col items-center lg:items-start">
                 <div className="w-40 sm:w-48 relative flex items-center justify-center">
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo2.png"
                     alt="Macaney Logo"
                     width={260}
                     height={160}
@@ -42,7 +54,7 @@ export function Hero() {
                 </div>
                 <div className="flex flex-col text-center lg:text-left -mt-2">
                   <span className="font-serif font-bold text-stone-900 text-base sm:text-lg leading-tight tracking-tight">
-                    MACANEY SUSTAINABLE SOLUTIONS
+                    Macaney Sustainable Solutions
                   </span>
                   <span className="text-xs sm:text-sm text-stone-500 font-medium mt-0.5">
                     Building a Global Green Future For All
@@ -55,7 +67,7 @@ export function Hero() {
               </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-stone-900 leading-[1.1]">
-                From Hive to Honey <span className="text-green-800 block sm:inline">The Beginner's Guide to Beekeeping</span>
+                From Hive to Honey <span className="text-green-800 text-xl sm:text-2xl lg:text-3xl block sm:inline font-semibold">The Beginner's Guide to Beekeeping</span>
               </h1>
 
               <p className="text-stone-600 text-sm sm:text-base max-w-md mx-auto lg:mx-0 leading-relaxed">
@@ -63,7 +75,7 @@ export function Hero() {
               </p>
 
               {/* Ebook mockup - large, scales with column width on desktop */}
-              <div className="relative w-full max-w-[400px] sm:max-w-[480px] lg:max-w-none lg:w-[85%] aspect-[4/5] mx-auto lg:mx-0 transform drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]">
+              <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none lg:w-[68%] aspect-[4/5] mx-auto lg:mx-0 transform drop-shadow-[0_20px_30px_rgba(0,0,0,0.2)]">
                 <Image
                   src="/images/ebook-cover.png"
                   alt="From Hive To Honey Ebook Guide"

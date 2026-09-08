@@ -101,7 +101,7 @@ export function LeadForm() {
         ) : (
           <>
             <p className="text-emerald-700 font-medium mb-6 text-sm bg-emerald-50 p-3 rounded-lg border border-emerald-200">
-              ✓ WhatsApp tab opened! You can now download your guide below.
+              ✓ You can now download your guide below.
             </p>
             <div className="space-y-4">
               <a
@@ -209,7 +209,7 @@ export function LeadForm() {
             type="tel"
             id="whatsapp"
             required
-            placeholder="+234 800 000 0000 (Supports African numbers)"
+            placeholder="+234 800 000 0000"
             value={formData.whatsapp}
             onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
             className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white text-stone-900 text-sm transition-all"
@@ -249,7 +249,7 @@ export function LeadForm() {
           {status === 'loading' ? (
             <span>Submitting...</span>
           ) : (
-            <span>Join WhatsApp Group TO Get E-Book</span>
+            <span>Join WhatsApp Group To Get E-Book</span>
           )}
         </button>
       </form>
