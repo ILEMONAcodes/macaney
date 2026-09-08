@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 
-export function LeadForm() {
+function LeadFormInner() {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     fullName: '',
@@ -82,7 +82,7 @@ export function LeadForm() {
         <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mb-3">
           You're in!
         </h3>
-        
+
         {!hasJoinedWhatsApp ? (
           <>
             <p className="text-stone-700 mb-8 max-w-md mx-auto text-base">
@@ -254,5 +254,13 @@ export function LeadForm() {
         </button>
       </form>
     </div>
+  );
+}
+
+export function LeadForm() {
+  return (
+    <Suspense fallback={<div className="animate-pulse h-96 bg-stone-100 rounded-2xl" />}>
+      <LeadFormInner />
+    </Suspense>
   );
 }
