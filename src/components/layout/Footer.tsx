@@ -19,6 +19,7 @@ export default function Footer() {
                   src="/images/logo.png" 
                   alt="Macaney Logo" 
                   fill
+                  sizes="40px"
                   className="object-contain p-1"
                 />
               </div>

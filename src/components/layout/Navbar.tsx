@@ -48,6 +48,12 @@ export default function Navbar() {
             Services
           </Link>
           <Link
+            href="/store"
+            className="text-stone-700 hover:text-emerald-600 transition-colors"
+          >
+            Store
+          </Link>
+          <Link
             href="/ai-beekeeper"
             className="text-stone-700 hover:text-amber-600 transition-colors"
           >
@@ -104,6 +110,13 @@ export default function Navbar() {
             className="block py-2 text-stone-800 font-medium hover:text-amber-600 border-b border-stone-100"
           >
             Services
+          </Link>
+          <Link
+            href="/store"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-stone-800 font-medium hover:text-emerald-600 border-b border-stone-100"
+          >
+            Store
           </Link>
           <Link
             href="/ai-beekeeper"
