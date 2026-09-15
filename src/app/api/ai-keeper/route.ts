@@ -3,9 +3,16 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-const GEMINI_MODEL = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
+const GEMINI_MODEL = process.env.GEMINI_MODEL ?? 'gemini-3.5-flash-lite';
 
-const SYSTEM_INSTRUCTION = `You are the lead AI Beekeeper and Technical Agritech Advisor for Macaney Sustainable Solutions, "The Home of Successful Beekeeping in Africa." Your purpose is to provide expert, practical, and highly accurate guidance on apiculture, commercial honey production, colony management, hive health monitoring, and sustainable environmental practices tailored to the African climate, flora, and indigenous bee subspecies such as Apis mellifera scutellata.
+// Tried in order if the primary model is rate-limited (429) or unavailable (404).
+// Keeps the feature working without needing billing enabled or code changes
+// every time Google reshuffles model availability.
+const GEMINI_FALLBACK_MODELS = [GEMINI_MODEL, 'gemini-3.1-flash-lite', 'gemini-3-flash-preview'].filter(
+  (model, index, arr) => arr.indexOf(model) === index,
+);
+
+const SYSTEM_INSTRUCTION = `You are ThinkBee, the lead beekeeping and technical agritech advisor for Macaney Sustainable Solutions, "The Home of Successful Beekeeping in Africa." Your purpose is to provide expert, practical, and highly accurate guidance on apiculture, commercial honey production, colony management, hive health monitoring, and sustainable environmental practices tailored to the African climate, flora, and indigenous bee subspecies such as Apis mellifera scutellata.
 
 Respond entirely as a seasoned, passionate human field expert from Macaney, never as an artificial intelligence or textbook. Write with a warm, grounded, authoritative, culturally authentic voice, as though sharing hard-earned wisdom directly with a fellow agriculturalist across a table. Give concrete, field-tested recommendations and explain the practical science behind them, including seasonal nectar flows, honeybee behaviour, ventilation, and local forage.
 
@@ -37,7 +44,7 @@ export async function POST(request: Request) {
   if (!apiKey) {
     console.error('GEMINI_API_KEY is not configured');
     return NextResponse.json(
-      { error: 'The AI Beekeeper is not configured yet. Please try again shortly.' },
+      { error: 'ThinkBee is not configured yet. Please try again shortly.' },
       { status: 503 },
     );
   }
@@ -63,26 +70,40 @@ export async function POST(request: Request) {
       : [];
 
     const ai = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
-      model: GEMINI_MODEL,
-      contents: [...history, { role: 'user', parts: [{ text: message }] }],
-      config: { systemInstruction: SYSTEM_INSTRUCTION },
-    });
-    const reply = response.text?.trim();
+
+    let reply: string | undefined;
+    let lastError: unknown;
+
+    for (const model of GEMINI_FALLBACK_MODELS) {
+      try {
+        const response = await ai.models.generateContent({
+          model,
+          contents: [...history, { role: 'user', parts: [{ text: message }] }],
+          config: { systemInstruction: SYSTEM_INSTRUCTION },
+        });
+        reply = response.text?.trim();
+        if (reply) break;
+      } catch (err) {
+        lastError = err;
+        const status = typeof err === 'object' && err !== null ? (err as ApiError).status : undefined;
+        if (status === 429 || status === 404) continue; // rate-limited or model unavailable — try the next one
+        throw err; // any other error (network, auth, etc.) bubbles up immediately
+      }
+    }
 
     if (!reply) {
-      throw new Error('Gemini returned an empty response');
+      throw lastError ?? new Error('Gemini returned an empty response');
     }
 
     return NextResponse.json({ reply });
   } catch (error) {
-    console.error('AI Beekeeper request failed:', error);
+    console.error('ThinkBee request failed:', error);
 
     if (typeof error === 'object' && error !== null && (error as ApiError).status === 429) {
       return NextResponse.json(
         {
           error:
-            'The AI Beekeeper has reached its current request limit. Please try again later.',
+            'ThinkBee has reached its current request limit. Please try again later.',
         },
         { status: 429 },
       );
@@ -90,13 +111,13 @@ export async function POST(request: Request) {
 
     if (typeof error === 'object' && error !== null && (error as ApiError).status === 404) {
       return NextResponse.json(
-        { error: 'The AI Beekeeper model is unavailable. Please contact us to restore the service.' },
+        { error: 'ThinkBee is unavailable. Please contact us to restore the service.' },
         { status: 503 },
       );
     }
 
     return NextResponse.json(
-      { error: 'I could not reach the AI Beekeeper just now. Please try again.' },
+      { error: 'I could not reach ThinkBee just now. Please try again.' },
       { status: 502 },
     );
   }

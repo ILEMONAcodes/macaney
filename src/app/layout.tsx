@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   description: "Master modern beekeeping and scale your apiary with our free guide.",
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -18,9 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-stone-50 text-stone-950 antialiased flex flex-col min-h-screen`}>
+      <body className={`${inter.className} flex min-h-screen w-full flex-col overflow-x-hidden bg-stone-50 text-stone-950 antialiased`}>
         <Navbar />
-        <div className="flex-grow">{children}</div>
+        <div className="min-w-0 flex-grow">{children}</div>
         <Footer />
       </body>
     </html>

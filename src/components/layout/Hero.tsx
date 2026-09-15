@@ -94,7 +94,7 @@ export default function MacaneyHeroSlider() {
   const activeSlide = MACANEY_HERO_SLIDES[currentSlide];
 
   return (
-    <section className="relative w-full h-[95vh] min-h-[660px] max-h-[1020px] overflow-hidden bg-stone-950 text-white pt-10 sm:pt-14">
+    <section className="relative min-h-[560px] w-full overflow-hidden bg-stone-950 pt-10 text-white sm:h-[95vh] sm:min-h-[660px] sm:max-h-[1020px] sm:pt-14">
       {/* Background Media Slideshow */}
       {MACANEY_HERO_SLIDES.map((slide, index) => {
         const isActive = index === currentSlide;
@@ -143,13 +143,13 @@ export default function MacaneyHeroSlider() {
       `}</style>
 
       {/* Main Hero Container */}
-      <div className="relative z-20 h-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between pt-6 sm:pt-10 pb-20">
+      <div className="relative z-20 mx-auto flex min-h-[560px] max-w-5xl flex-col justify-between px-4 pb-20 pt-6 sm:h-full sm:min-h-0 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8">
         
         {/* Top Spacer */}
         <div className="pt-2" />
 
         {/* Center Content Section - Fully Centered for both mobile and desktop */}
-        <div key={currentSlide} className="max-w-3xl mx-auto text-center my-auto space-y-6 animate-content">
+        <div key={currentSlide} className="my-auto mx-auto max-w-3xl space-y-5 py-8 text-center sm:space-y-6 sm:py-0 animate-content">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-white leading-[1.15] drop-shadow-md">
             {activeSlide.title}
           </h1>
@@ -158,17 +158,17 @@ export default function MacaneyHeroSlider() {
             {activeSlide.subtitle}
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col items-stretch justify-center gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <Link
               href={activeSlide.buttonLink}
-              className="inline-flex items-center justify-center px-7 py-3.5 bg-amber-500 text-stone-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-400 transition-all shadow-lg rounded-xl active:scale-95 gap-2 group"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-stone-950 shadow-lg transition-all hover:bg-amber-400 active:scale-95"
             >
               {activeSlide.buttonText}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center px-6 py-3.5 bg-stone-900/60 hover:bg-stone-900/80 border border-white/30 text-white font-semibold text-xs uppercase tracking-wider transition-all backdrop-blur-md rounded-xl shadow-md"
+              className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-stone-900/60 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md backdrop-blur-md transition-all hover:bg-stone-900/80"
             >
               Explore Services
             </Link>
@@ -176,8 +176,8 @@ export default function MacaneyHeroSlider() {
         </div>
 
         {/* Bottom Controls & Community Proof Bar */}
-        <div className="space-y-4 mb-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-5">
+        <div className="mb-2 space-y-4 sm:mb-4">
+          <div className="flex flex-col items-start justify-between gap-4 pt-5 sm:flex-row sm:items-center">
             
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2 overflow-hidden">
@@ -191,8 +191,8 @@ export default function MacaneyHeroSlider() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-              <div className="flex items-center gap-1.5 w-36 sm:w-48">
+            <div className="flex w-full items-center justify-between gap-3 sm:w-auto sm:justify-end sm:gap-4">
+              <div className="flex w-full items-center gap-1.5 sm:w-48">
                 {MACANEY_HERO_SLIDES.map((_, idx) => (
                   <button
                     key={idx}

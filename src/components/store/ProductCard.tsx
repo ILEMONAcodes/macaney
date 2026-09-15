@@ -23,7 +23,7 @@ export default function ProductCard({ product, index, onAdd, onPreview }: Produc
 
   return (
     <article
-      className="group overflow-hidden border border-stone-200 bg-white"
+      className="group overflow-hidden border border-stone-200 bg-white transition duration-300 sm:hover:-translate-y-1 sm:hover:shadow-lg"
       style={{ animationDelay: String(Math.min(index * 55, 330)) + 'ms' }}
     >
       <div className="relative aspect-[4/4.6] overflow-hidden bg-stone-100">
@@ -44,7 +44,7 @@ export default function ProductCard({ product, index, onAdd, onPreview }: Produc
         <button
           type="button"
           onClick={() => onPreview(product)}
-          className="absolute bottom-3 right-3 flex size-10 items-center justify-center bg-white text-emerald-950 opacity-0 shadow-sm transition hover:bg-emerald-600 hover:text-white group-hover:opacity-100 focus:opacity-100"
+          className="absolute bottom-3 right-3 flex size-10 items-center justify-center bg-white text-emerald-950 opacity-100 shadow-sm transition hover:bg-emerald-600 hover:text-white focus:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
           aria-label={'View ' + product.name}
         >
           <Eye className="size-4" />
