@@ -11,6 +11,8 @@ export async function POST(request: Request) {
       email,
       phone_number,
       hives_count,
+      project,
+      message,
       source,
       medium,
       campaign
@@ -41,6 +43,8 @@ export async function POST(request: Request) {
         email,
         phone_number,
         hives_count,
+        project,
+        message,
         source,
         medium,
         campaign
