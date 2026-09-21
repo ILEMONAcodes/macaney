@@ -83,3 +83,35 @@ body {
   animation: fly-around 12s ease-in-out infinite;
   will-change: transform;
 }
+
+/* Contact hero: keep the copy legible over its illustration on small screens. */
+@media (max-width: 639px) {
+  body:has(#booking-form) main > section:first-child {
+    height: 21rem;
+  }
+
+  body:has(#booking-form) main > section:first-child > div:nth-of-type(2) {
+    background: linear-gradient(90deg, rgba(255, 250, 235, 0.97) 0%, rgba(255, 248, 221, 0.91) 68%, rgba(253, 230, 138, 0.42) 100%);
+  }
+
+  body:has(#booking-form) main > section:first-child > div:nth-of-type(3) {
+    z-index: 10;
+    padding-bottom: 2.5rem;
+  }
+
+  body:has(#booking-form) main > section:first-child h1 {
+    font-size: 1.875rem;
+    line-height: 1.04;
+  }
+
+  body:has(#booking-form) main > section:first-child > div:nth-of-type(3) > div > p:first-child {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+  }
+
+  body:has(#booking-form) main > section:first-child > div:nth-of-type(3) > div > p:last-child {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
