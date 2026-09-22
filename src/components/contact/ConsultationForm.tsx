@@ -1,7 +1,6 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { CheckCircle2, ChevronDown, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '@/lib/services';
@@ -11,16 +10,17 @@ const PROJECTS = SERVICES.map(({ name }) => name);
 const fieldClass = 'w-full rounded-xl border border-stone-200 bg-stone-50 px-4 py-3.5 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-emerald-600 focus:bg-white focus:ring-4 focus:ring-emerald-700/10';
 
 export default function ConsultationForm() {
-  const searchParams = useSearchParams();
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [form, setForm] = useState({ name: '', email: '', phone: '', project: '', message: '' });
 
   useEffect(() => {
-    const selectedProject = searchParams.get('project');
+    // Query parameters are only available in the browser. Reading them here keeps
+    // this otherwise static page safe to prerender during production builds.
+    const selectedProject = new URLSearchParams(window.location.search).get('project');
     if (selectedProject && PROJECTS.includes(selectedProject as (typeof PROJECTS)[number])) {
       setForm((current) => ({ ...current, project: selectedProject }));
     }
-  }, [searchParams]);
+  }, []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
