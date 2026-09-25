@@ -86,7 +86,7 @@ function LeadFormInner() {
         {!hasJoinedWhatsApp ? (
           <>
             <p className="text-stone-700 mb-8 max-w-md mx-auto text-base">
-              Your details have been received. Join our WhatsApp community below to get your free beekeeping guide and connect with fellow apiary owners.
+              Your details have been received. Join our WhatsApp community below to get your free beekeeping guide and connect with fellow apiary owners. When you join, introduce yourself: “Hello Macaney, I’m [your name]. I’m happy to be part of the Macaney community!”
             </p>
             <div className="space-y-4">
               <button

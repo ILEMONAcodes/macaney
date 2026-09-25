@@ -43,19 +43,10 @@ export default function Footer() {
                 <Link href="/about" className="hover:text-white transition-colors">About</Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors">Insights</Link>
-              </li>
-              <li>
                 <Link href="/free-ebook" className="hover:text-white transition-colors">Free Guide</Link>
               </li>
               <li>
-                <Link href="/manual" className="hover:text-white transition-colors">The Manual</Link>
-              </li>
-              <li>
-                <Link href="/ai-app" className="hover:text-white transition-colors">AI App</Link>
-              </li>
-              <li>
-                <Link href="/commercial-setup" className="hover:text-white transition-colors">Commercial Setup</Link>
+                <Link href="/ai-beekeeper" className="hover:text-white transition-colors">AI App</Link>
               </li>
             </ul>
           </div>
@@ -65,16 +56,51 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Contact Info</h4>
             <div className="text-sm text-stone-300 space-y-1.5">
               <p className="font-medium text-white">Get in Touch</p>
-              <p>Email: info@macaneysolutions.com</p>
-              <p>WhatsApp: +234 (0) 800 000 0000</p>
+              <p>Email: chiamaka@macaneysolutions.com</p>
+              <p>WhatsApp: 08101126434</p>
             </div>
           </div>
 
         </div>
 
         {/* Copyright Bar */}
-        <div className="pt-8 border-t border-emerald-900/60 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-4">
+        <div className="pt-8 border-t border-emerald-900/60 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-5">
           <p>© 2026 Macaney Sustainable Solutions. All Rights Reserved.</p>
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Connect With Us</h4>
+            <nav aria-label="Social media" className="flex items-center gap-2">
+              <a
+                href="https://www.instagram.com/chiamaka_precious_orji?stkn=djRramdocmg5MjFu&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+                className="group flex size-10 items-center justify-center overflow-hidden rounded-full border border-stone-400/20 bg-white/5 transition-colors hover:border-emerald-500/40 hover:bg-emerald-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <Image src="/images/instagram.jpeg" alt="" width={40} height={40} className="size-full rounded-full object-cover" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/orji-chiamaka-precious-691b771b9?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="group flex size-10 items-center justify-center overflow-hidden rounded-full border border-stone-400/20 bg-white/5 transition-colors hover:border-emerald-500/40 hover:bg-emerald-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <Image src="/images/linkedin.png" alt="" width={40} height={40} className="size-full rounded-full object-cover" />
+              </a>
+              <a
+                href="https://www.facebook.com/share/1Fi97P7hoE/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+                className="group flex size-10 items-center justify-center overflow-hidden rounded-full border border-stone-400/20 bg-white/5 transition-colors hover:border-emerald-500/40 hover:bg-emerald-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <Image src="/images/facebook.png" alt="" width={40} height={40} className="size-full rounded-full object-cover" />
+              </a>
+            </nav>
+          </div>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="hover:text-stone-200 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-stone-200 transition-colors">Terms of Service</Link>

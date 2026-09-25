@@ -18,13 +18,12 @@ export const siteConfig = {
   name: "Macaney Sustainable Solutions",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://macaney.com",
   links: {
-    whatsappGroup: process.env.NEXT_PUBLIC_WHATSAPP_GROUP_URL || "https://chat.whatsapp.com/placeholder",
+    whatsappGroup: "https://chat.whatsapp.com/BMXWxC3MzTWAfsjYYWhHyh?s=cl&p=i&mlu=4&ilr=4",
     ebookDownload: process.env.NEXT_PUBLIC_EBOOK_URL || "/assets/macaney-beginner-beekeeping-guide.pdf",
     supportEmail: "support@macaney.com",
     whatsappSupport: "https://wa.me/2348000000000",
   },
 };
-
 
 
 

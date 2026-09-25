@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { MessageCircle, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
 import FadeIn from '@/components/animations/FadeIn';
+import { siteConfig } from '@/config/site';
 
 export default function CommunitySection() {
   const [email, setEmail] = useState('');
@@ -34,13 +35,13 @@ export default function CommunitySection() {
                 Connect with Africa’s Fastest-Growing Beekeeping Network
               </h3>
               <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-                Get real-time updates, field tips, and direct access to expert guidance inside our official WhatsApp group.
+                Get real-time updates, field tips, and direct access to expert guidance inside our official WhatsApp group. After joining, introduce yourself: “Hello Macaney, I’m [your name]. I’m happy to be part of the Macaney community!”
               </p>
             </div>
 
             <div className="pt-8">
               <a
-                href="https://whatsapp.com"
+                href={siteConfig.links.whatsappGroup}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full sm:w-auto px-7 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg gap-2 group"
