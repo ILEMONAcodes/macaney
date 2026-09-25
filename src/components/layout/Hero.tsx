@@ -125,8 +125,8 @@ export default function MacaneyHeroSlider() {
               />
             )}
             {/* Lighter overlay for clarity and brightness */}
-            <div className={`absolute inset-0 ${isVideoSlide ? 'bg-stone-950/45 md:bg-stone-950/40 lg:bg-emerald-950/50' : 'bg-stone-950/45 md:bg-stone-950/40'}`} />
-            <div className={`absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent ${isVideoSlide ? 'lg:hidden' : ''}`} />
+            <div className="absolute inset-0 bg-stone-950/45 md:bg-stone-950/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
           </div>
         );
       })}
