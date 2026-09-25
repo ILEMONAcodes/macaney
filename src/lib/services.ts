@@ -7,8 +7,8 @@ export const SERVICES = [
     imageAlt: 'Beekeepers tending wooden hives in a sunny apiary',
   },
   {
-    name: 'Smart Hive & AgTech Advisory',
-    description: 'Use thoughtful hive monitoring, field data, and modern tools to make better decisions for every colony.',
+    name: 'ThinkBee AI Beekeeping Guidance',
+    description: 'Get practical AI-assisted guidance for colony care, hive management, honey production, and sustainable apiary growth.',
     icon: 'sparkles',
     image: '/images/beeai.png',
     imageAlt: 'A smart bee illustration representing agtech advisory',

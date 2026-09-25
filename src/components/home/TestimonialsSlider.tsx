@@ -28,7 +28,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: 3,
-    quote: "Macaney's smart hive insights completely transformed how we monitor colony health. The level of operational support and precision is unmatched.",
+    quote: "Macaney's ThinkBee AI assistant makes practical beekeeping guidance easier to access. Its support for colony care and apiary management is clear and useful.",
     author: "Dr. Aminu Bello",
     role: "AgTech Researcher",
     initials: "AB",

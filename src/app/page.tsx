@@ -4,6 +4,7 @@ import ServiceTicker from '@/components/layout/ServiceTicker';
 import MediaTicker from '@/components/layout/MediaTicker';
 import LeadershipCard from '@/components/home/LeadershipCard';
 import TestimonialsSlider from '@/components/home/TestimonialsSlider';
+import ImpactStats from '@/components/home/ImpactStats';
 import CommunitySection from '@/components/home/CommunitySection';
 
 export default function HomePage() {
@@ -24,7 +25,10 @@ export default function HomePage() {
       {/* 5. Testimonials & Social Proof Section */}
       <TestimonialsSlider />
 
-      {/* 6. Community & Newsletter Capture Section */}
+      {/* 6. Impact numbers */}
+      <ImpactStats />
+
+      {/* 7. Community & Newsletter Capture Section */}
       <CommunitySection />
     </main>
   );

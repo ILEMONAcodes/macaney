@@ -8,7 +8,8 @@ import {
   Play, 
   ChevronLeft, 
   ChevronRight, 
-  ArrowRight 
+  ArrowRight,
+  MessageCircle,
 } from 'lucide-react';
 
 interface Slide {
@@ -52,9 +53,9 @@ const MACANEY_HERO_SLIDES: Slide[] = [
   {
     id: 4,
     title: 'Modern Technology Meets Sustainable Beekeeping',
-    subtitle: 'Leverage smart hive monitoring and data-driven insights to maximize honey yields and ensure colony health all year round.',
+    subtitle: 'Get practical AI-assisted guidance for colony care, hive management, and sustainable honey production with ThinkBee.',
     buttonText: 'Discover Technology',
-    buttonLink: '/technology',
+    buttonLink: '/ai-beekeeper',
     mediaType: 'image',
     mediaUrl: '/images/beeai.png',
   },
@@ -70,6 +71,9 @@ const MACANEY_HERO_SLIDES: Slide[] = [
 ];
 
 const SLIDE_DURATION = 6000;
+const WHATSAPP_QUOTE_URL = `https://wa.me/2348101126434?text=${encodeURIComponent(
+  'Hello Macaney, I want to set up a commercial apiary. What is the cost? I am located at [please specify your location].',
+)}`;
 
 export default function MacaneyHeroSlider() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -167,12 +171,16 @@ export default function MacaneyHeroSlider() {
               {activeSlide.buttonText}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-stone-900/60 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md backdrop-blur-md transition-all hover:bg-stone-900/80"
+            <a
+              href={WHATSAPP_QUOTE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get a quote on WhatsApp"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-stone-900/60 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-md backdrop-blur-md transition-all hover:bg-stone-900/80"
             >
-              Explore Services
-            </Link>
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Get Quote
+            </a>
           </div>
         </div>
 

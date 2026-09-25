@@ -6,13 +6,17 @@ import FadeIn from '@/components/animations/FadeIn';
 
 export default function CommunitySection() {
   const [email, setEmail] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
+  const [consent, setConsent] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !whatsapp || !consent) return;
     setSubscribed(true);
     setEmail('');
+    setWhatsapp('');
+    setConsent(false);
   };
 
   return (
@@ -56,10 +60,10 @@ export default function CommunitySection() {
                 <Mail className="w-4 h-4" /> Stay Informed
               </div>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight">
-                Stay Ahead in Agribusiness & AgTech
+                Stay Ahead of Modern Apiculture
               </h3>
               <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-                Receive exclusive industry insights, grant announcements, and early updates on our AI tools delivered straight to your inbox.
+                Receive expert beekeeping insights, grant opportunities, industry updates, and early access to AI-powered hive management tools.
               </p>
             </div>
 
@@ -67,23 +71,43 @@ export default function CommunitySection() {
               {subscribed ? (
                 <div className="flex items-center gap-3 p-4 bg-emerald-900/80 border border-emerald-700 rounded-xl text-emerald-200">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <p className="text-sm font-medium">Thank you! You have successfully subscribed to our newsletter.</p>
+                  <p className="text-sm font-medium">Thank you! You’ll receive beekeeping updates and opportunities by email and WhatsApp.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                <form onSubmit={handleSubscribe} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter Your Email Address"
+                    placeholder="Enter your email address"
+                    aria-label="Email address"
                     required
                     className="flex-grow px-4 py-3.5 rounded-xl bg-stone-900 border border-emerald-800 text-white placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
                   />
+                  <input
+                    type="tel"
+                    value={whatsapp}
+                    onChange={(e) => setWhatsapp(e.target.value)}
+                    placeholder="Enter your WhatsApp number"
+                    aria-label="WhatsApp phone number"
+                    required
+                    className="flex-grow px-4 py-3.5 rounded-xl bg-stone-900 border border-emerald-800 text-white placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                  />
+                  <label className="flex items-start gap-2 text-xs leading-relaxed text-stone-300 sm:col-span-2">
+                    <input
+                      type="checkbox"
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                      required
+                      className="mt-0.5 size-4 shrink-0 accent-emerald-500"
+                    />
+                    <span>I agree to receive beekeeping updates and opportunities via WhatsApp and email.</span>
+                  </label>
                   <button
                     type="submit"
-                    className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shrink-0"
+                    className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shrink-0 sm:col-span-2 sm:justify-self-end"
                   >
-                    Subscribe
+                    Get Updates
                   </button>
                 </form>
               )}
