@@ -98,10 +98,11 @@ export default function MacaneyHeroSlider() {
       {/* Background Media Slideshow */}
       {MACANEY_HERO_SLIDES.map((slide, index) => {
         const isActive = index === currentSlide;
+        const isVideoSlide = slide.mediaType === 'video';
         return (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isVideoSlide ? 'bg-emerald-950' : ''} ${
               isActive ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105'
             } transition-transform duration-7000`}
           >
@@ -112,7 +113,7 @@ export default function MacaneyHeroSlider() {
                 muted
                 loop
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="absolute inset-0 h-full w-full object-cover object-center lg:scale-110 lg:object-[55%_60%]"
               />
             ) : (
               <Image
@@ -124,8 +125,8 @@ export default function MacaneyHeroSlider() {
               />
             )}
             {/* Lighter overlay for clarity and brightness */}
-            <div className="absolute inset-0 bg-stone-950/45 md:bg-stone-950/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
+            <div className={`absolute inset-0 ${isVideoSlide ? 'bg-stone-950/45 md:bg-stone-950/40 lg:bg-emerald-950/50' : 'bg-stone-950/45 md:bg-stone-950/40'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent ${isVideoSlide ? 'lg:hidden' : ''}`} />
           </div>
         );
       })}
