@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { LeadForm } from '@/components/free-ebook/LeadForm';
+import { siteConfig } from '@/config/site';
 
 export function HeroTwo() {
   return (
@@ -33,7 +34,7 @@ export function HeroTwo() {
               alt="Flying Honey Bee"
               width={96}
               height={96}
-              className="object-contain"
+              className="h-full w-auto object-contain"
               priority
             />
           </div>
@@ -79,6 +80,7 @@ export function HeroTwo() {
                   src="/images/ebook-cover-2.png"
                   alt="10 Signs You May Not Be Eating Real Honey Ebook Guide"
                   fill
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 34vw"
                   className="object-contain rounded-xl"
                   priority
                 />
@@ -101,7 +103,10 @@ export function HeroTwo() {
             {/* Right Column: Lead Form */}
             <div className="lg:col-span-6 w-full max-w-md mx-auto lg:max-w-none lg:sticky lg:top-24">
               <div className="bg-amber-50/30 border border-amber-200/60 rounded-3xl p-6 sm:p-8 shadow-inner relative z-10 transition-all duration-300 hover:shadow-xl">
-                <LeadForm />
+                <LeadForm
+                  downloadUrl={siteConfig.links.realHoneyGuideDownload}
+                  downloadName="Macaney-Honey-Complete-Guide.pdf"
+                />
               </div>
             </div>
 

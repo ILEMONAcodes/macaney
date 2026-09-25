@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { LeadForm } from '@/components/free-ebook/LeadForm';
+import { siteConfig } from '@/config/site';
 
 export function Hero() {
   return (
@@ -32,7 +33,7 @@ export function Hero() {
               alt="Flying Honey Bee"
               width={96}
               height={96}
-              className="object-contain"
+              className="h-full w-auto object-contain"
               priority
             />
           </div>
@@ -80,6 +81,7 @@ export function Hero() {
                   src="/images/ebook-cover.png"
                   alt="From Hive To Honey Ebook Guide"
                   fill
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 34vw"
                   className="object-contain rounded-xl"
                   priority
                 />
@@ -97,7 +99,10 @@ export function Hero() {
 
             <div className="lg:col-span-6 w-full max-w-md mx-auto lg:max-w-none lg:sticky lg:top-24">
               <div className="bg-amber-50/30 border border-amber-200/60 rounded-3xl p-6 sm:p-8 shadow-inner relative z-10 transition-all duration-300 hover:shadow-xl">
-                <LeadForm />
+                <LeadForm
+                  downloadUrl={siteConfig.links.fromHiveToHoneyDownload}
+                  downloadName="From-Hive-to-Honey-Beginners-Guide.docx"
+                />
               </div>
             </div>
 

@@ -4,7 +4,12 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 
-function LeadFormInner() {
+interface LeadFormProps {
+  downloadUrl: string;
+  downloadName: string;
+}
+
+function LeadFormInner({ downloadUrl, downloadName }: LeadFormProps) {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     fullName: '',
@@ -59,8 +64,9 @@ function LeadFormInner() {
         }),
       });
 
+      const result = await response.json().catch(() => null);
       if (!response.ok) {
-        throw new Error('Failed to submit form. Please check your details.');
+        throw new Error(result?.error || 'Failed to submit form. Please check your details.');
       }
 
       setStatus('success');
@@ -113,11 +119,12 @@ function LeadFormInner() {
                 <span>JOIN WHATSAPP GROUP</span>
               </a>
               <a
-                href={siteConfig.links.ebookDownload}
-                download
-                className="w-full inline-flex items-center justify-center gap-2 bg-honey-100 hover:bg-honey-200 text-stone-900 font-semibold py-3 px-8 rounded-xl transition-all text-sm cursor-pointer"
+                href={downloadUrl}
+                download={downloadName}
+                aria-label={`Download ${downloadName}`}
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-8 py-3 text-sm font-bold text-stone-950 shadow-md transition-colors hover:bg-amber-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 cursor-pointer"
               >
-                <span>Download PDF Direct Link</span>
+                <span>{downloadName.endsWith('.pdf') ? 'Download PDF Guide' : 'Download Word Guide'}</span>
               </a>
             </div>
           </>
@@ -257,10 +264,10 @@ function LeadFormInner() {
   );
 }
 
-export function LeadForm() {
+export function LeadForm({ downloadUrl, downloadName }: LeadFormProps) {
   return (
     <Suspense fallback={<div className="animate-pulse h-96 bg-stone-100 rounded-2xl" />}>
-      <LeadFormInner />
+      <LeadFormInner downloadUrl={downloadUrl} downloadName={downloadName} />
     </Suspense>
   );
 }

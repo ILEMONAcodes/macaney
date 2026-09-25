@@ -19,13 +19,12 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://macaney.com",
   links: {
     whatsappGroup: "https://chat.whatsapp.com/BMXWxC3MzTWAfsjYYWhHyh?s=cl&p=i&mlu=4&ilr=4",
-    ebookDownload: process.env.NEXT_PUBLIC_EBOOK_URL || "/assets/macaney-beginner-beekeeping-guide.pdf",
+    realHoneyGuideDownload: "/macaney-honey-complete-guide.pdf",
+    fromHiveToHoneyDownload: "/from-hive-to-honey-beginners-guide.docx",
     supportEmail: "support@macaney.com",
     whatsappSupport: "https://wa.me/2348000000000",
   },
 };
-
-
 
 
 

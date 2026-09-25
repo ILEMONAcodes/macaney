@@ -52,7 +52,13 @@ export async function POST(request: Request) {
     });
 
     if (!googleResponse.ok) {
-      throw new Error('Failed to record lead in Google Sheets');
+      console.error(
+        `Google Apps Script rejected the lead with HTTP ${googleResponse.status} ${googleResponse.statusText}`,
+      );
+      return NextResponse.json(
+        { error: 'We could not save your details right now. Please try again shortly.' },
+        { status: 502 },
+      );
     }
 
     return NextResponse.json({ success: true, message: 'Lead recorded successfully' }, { status: 200 });
