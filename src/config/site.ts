@@ -22,7 +22,7 @@ export const siteConfig = {
     realHoneyGuideDownload: "/macaney-honey-complete-guide.pdf",
     fromHiveToHoneyDownload: "/from-hive-to-honey-beginners-guide.docx",
     supportEmail: "support@macaney.com",
-    whatsappSupport: "https://wa.me/2348000000000",
+    whatsappSupport: "https://wa.me/2348101126434",
   },
 };
 

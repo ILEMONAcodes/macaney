@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { siteConfig } from '@/config/site';
 
 export default function Footer() {
   return (
@@ -57,7 +58,7 @@ export default function Footer() {
             <div className="text-sm text-stone-300 space-y-1.5">
               <p className="font-medium text-white">Get in Touch</p>
               <p>Email: chiamaka@macaneysolutions.com</p>
-              <p>WhatsApp: 08101126434</p>
+              <p>WhatsApp: <a href={siteConfig.links.whatsappSupport} target="_blank" rel="noopener noreferrer" className="transition hover:text-white">+2348101126434</a></p>
             </div>
           </div>
 

@@ -1,7 +1,8 @@
 'use client';
 
-import { Eye, PackageCheck, Plus } from 'lucide-react';
-import type { Product } from '@/lib/store/types';
+import { ArrowUpRight } from 'lucide-react';
+import { siteConfig } from '@/config/site';
+import type { StoreProduct } from '@/lib/store/products';
 
 export function formatPrice(price: number, currency: string) {
   return new Intl.NumberFormat('en-NG', {
@@ -12,14 +13,12 @@ export function formatPrice(price: number, currency: string) {
 }
 
 type ProductCardProps = {
-  product: Product;
+  product: StoreProduct;
   index: number;
-  onAdd: (product: Product) => void;
-  onPreview: (product: Product) => void;
 };
 
-export default function ProductCard({ product, index, onAdd, onPreview }: ProductCardProps) {
-  const inStock = product.stock_quantity > 0;
+export default function ProductCard({ product, index }: ProductCardProps) {
+  const question = `Hi Macaney, my name is [Your name] and I am contacting you from [Your location]. I am interested in ${product.name} and would like to ask a few questions about it. Could you please share more information, current availability, and delivery options? Thank you.`;
 
   return (
     <article
@@ -27,44 +26,40 @@ export default function ProductCard({ product, index, onAdd, onPreview }: Produc
       style={{ animationDelay: String(Math.min(index * 55, 330)) + 'ms' }}
     >
       <div className="relative aspect-[4/4.6] overflow-hidden bg-stone-100">
-        {product.image_url ? (
-          <img
-            src={product.image_url}
-            alt={product.name}
-            className="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
-          />
-        ) : (
-          <div className="flex size-full items-center justify-center bg-emerald-950 text-stone-50">
-            <PackageCheck className="size-12" />
-          </div>
-        )}
-        <span className={'absolute left-3 top-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] ' + (inStock ? 'bg-white text-emerald-950' : 'bg-stone-900 text-white')}>
-          {inStock ? 'In stock' : 'On request'}
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        />
+        <span className="absolute left-3 top-3 bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-emerald-950">
+          {product.category}
         </span>
-        <button
-          type="button"
-          onClick={() => onPreview(product)}
-          className="absolute bottom-3 right-3 flex size-10 items-center justify-center bg-white text-emerald-950 opacity-100 shadow-sm transition hover:bg-emerald-600 hover:text-white focus:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
-          aria-label={'View ' + product.name}
-        >
-          <Eye className="size-4" />
-        </button>
       </div>
       <div className="p-4 sm:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-emerald-700">Macaney apiary supply</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-emerald-700">Macaney Sustainable Solutions</p>
         <h2 className="mt-2 min-h-12 text-base font-bold leading-6 text-stone-900">{product.name}</h2>
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-stone-100 pt-4">
+        <p className="mt-2 min-h-12 text-sm leading-5 text-stone-600">{product.description}</p>
+        <div className="mt-4 flex flex-wrap items-baseline gap-x-2 border-t border-stone-100 pt-4">
           <span className="text-base font-bold text-emerald-950">{formatPrice(product.price, product.currency)}</span>
-          <button
-            type="button"
-            onClick={() => onAdd(product)}
-            className="flex size-9 shrink-0 items-center justify-center bg-emerald-700 text-white transition hover:bg-emerald-950 disabled:cursor-not-allowed disabled:bg-stone-300"
-            disabled={!inStock}
-            aria-label={'Add ' + product.name + ' to basket'}
-          >
-            <Plus className="size-4" />
-          </button>
+          {product.compareAtPrice && <span className="text-sm text-stone-400 line-through">{formatPrice(product.compareAtPrice, product.currency)}</span>}
         </div>
+        <a
+          href={product.selarUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 bg-emerald-800 px-4 text-sm font-bold text-white transition hover:bg-emerald-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
+        >
+          Continue to secure checkout <ArrowUpRight className="size-4" />
+        </a>
+        <a
+          href={`${siteConfig.links.whatsappSupport}?text=${encodeURIComponent(question)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex min-h-10 w-full items-center justify-center px-3 text-sm font-semibold text-emerald-800 underline-offset-4 transition hover:text-emerald-950 hover:underline"
+        >
+          Ask about this product
+        </a>
       </div>
     </article>
   );

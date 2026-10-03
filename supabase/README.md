@@ -1,28 +1,5 @@
-# Macaney Store: Supabase setup
+# Supabase Store Archive
 
-Create a Supabase project, then open its SQL Editor and run `migrations/20260914_create_store.sql` in full. The migration creates the inventory tables, seed products, profile trigger, and row-level security policies.
+The public catalog is now maintained in `src/lib/store/products.ts`, and Selar handles product checkout and payment processing. The former Supabase inventory setup is no longer part of the active store.
 
-In Supabase Authentication, enable Email authentication and create the first store administrator. Copy that user’s UUID from the Users screen, then run this in the SQL Editor:
-
-```sql
-update public.profiles
-set is_store_admin = true
-where id = 'YOUR_AUTH_USER_UUID';
-```
-
-If the user was created before the migration ran, create its profile first:
-
-```sql
-insert into public.profiles (id, is_store_admin)
-values ('YOUR_AUTH_USER_UUID', true)
-on conflict (id) do update set is_store_admin = true;
-```
-
-Add these values locally and in the deployment provider’s environment settings. Use the project URL and publishable/anon key from Supabase’s Connect panel. Do not add a service-role key to the browser or to a `NEXT_PUBLIC_` variable.
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-```
-
-The public store reads only active listings. The admin panel can read, create, update, and delete products only after Supabase confirms that the signed-in profile has `is_store_admin = true`. Those restrictions are enforced by PostgreSQL row-level security, not merely by the user interface.
+`migrations/20260914_create_store.sql` is retained as historical setup for deployments that used the earlier inventory prototype. Do not use it to configure a new public catalog.
