@@ -59,8 +59,8 @@ function ImpactCounter({ value, label }: ImpactCounterProps) {
 
 export default function ImpactStats() {
   return (
-    <section aria-label="Our impact" className="border-y border-stone-200 bg-white px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-5xl grid-cols-1 divide-y divide-stone-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+    <section aria-label="Our impact" className="bg-white px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-6">
         <ImpactCounter value={500} label="Youth Empowered" />
         <ImpactCounter value={2000} label="New Sustainable Hives" />
       </div>

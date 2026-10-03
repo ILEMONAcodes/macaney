@@ -21,7 +21,7 @@ export default function CommunitySection() {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white">
+    <section className="pb-20 pt-8 px-4 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8 max-w-7xl mx-auto bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
         
         {/* Block A: WhatsApp Community */}

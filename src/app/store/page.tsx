@@ -99,15 +99,15 @@ export default function StorePage() {
           <aside id="categories" className="scroll-mt-24 border-b border-stone-200 pb-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-6">
             <div className="mb-4 flex items-center gap-2 text-sm font-bold"><SlidersHorizontal className="size-4 text-emerald-700" /> Browse by category</div>
             <div className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:flex-col">
-              {categories.map((item) => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={'flex min-h-11 items-center justify-center border px-3 py-2.5 text-center text-sm transition lg:justify-start lg:text-left ' + (category === item ? 'border-emerald-800 bg-emerald-950 text-white' : 'border-stone-200 bg-white text-stone-700 hover:border-emerald-700')}>{item}</button>)}
+              {categories.map((item) => <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item} className={'flex min-h-11 items-center justify-center rounded-lg border px-3 py-2.5 text-center text-sm transition lg:justify-start lg:text-left ' + (category === item ? 'border-emerald-800 bg-emerald-950 text-white' : 'border-stone-200 bg-white text-stone-700 hover:border-emerald-700')}>{item}</button>)}
             </div>
           </aside>
 
           <div>
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <label className="relative block max-w-md flex-1"><Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-stone-400" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products" aria-label="Search products" className="h-11 w-full border border-stone-300 bg-white pl-10 pr-3 text-sm outline-none transition focus:border-emerald-700" /></label>
+              <label className="relative block max-w-md flex-1"><Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-stone-400" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products" aria-label="Search products" className="h-11 w-full rounded-lg border border-stone-300 bg-white pl-10 pr-3 text-sm outline-none transition focus:border-emerald-700" /></label>
             </div>
-            {filteredProducts.length === 0 && <div className="border border-stone-200 bg-stone-50 px-6 py-14 text-center"><h2 className="font-bold">No products found</h2><p className="mt-1 text-sm text-stone-500">Try another category or search term.</p></div>}
+            {filteredProducts.length === 0 && <div className="rounded-xl border border-stone-200 bg-stone-50 px-6 py-14 text-center"><h2 className="font-bold">No products found</h2><p className="mt-1 text-sm text-stone-500">Try another category or search term.</p></div>}
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{filteredProducts.map((product, index) => <ProductCard key={product.id} product={product} index={index} />)}</div>
           </div>
         </div>

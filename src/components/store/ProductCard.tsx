@@ -22,7 +22,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
 
   return (
     <article
-      className="group overflow-hidden border border-stone-200 bg-white transition duration-300 sm:hover:-translate-y-1 sm:hover:shadow-lg"
+      className="group overflow-hidden rounded-xl border border-stone-200 bg-white transition duration-300 sm:hover:-translate-y-1 sm:hover:shadow-lg"
       style={{ animationDelay: String(Math.min(index * 55, 330)) + 'ms' }}
     >
       <div className="relative aspect-[4/4.6] overflow-hidden bg-stone-100">
@@ -32,7 +32,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           className="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
           loading="lazy"
         />
-        <span className="absolute left-3 top-3 bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-emerald-950">
+        <span className="absolute left-3 top-3 rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-emerald-950">
           {product.category}
         </span>
       </div>
@@ -48,7 +48,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           href={product.selarUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 bg-emerald-800 px-4 text-sm font-bold text-white transition hover:bg-emerald-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
+          className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-emerald-800 px-4 text-sm font-bold text-white transition hover:bg-emerald-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
         >
           Continue to secure checkout <ArrowUpRight className="size-4" />
         </a>
@@ -56,7 +56,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           href={`${siteConfig.links.whatsappSupport}?text=${encodeURIComponent(question)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex min-h-10 w-full items-center justify-center px-3 text-sm font-semibold text-emerald-800 underline-offset-4 transition hover:text-emerald-950 hover:underline"
+          className="mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-lg px-3 text-sm font-semibold text-emerald-800 underline-offset-4 transition hover:bg-emerald-50 hover:text-emerald-950 hover:underline"
         >
           Ask about this product
         </a>
