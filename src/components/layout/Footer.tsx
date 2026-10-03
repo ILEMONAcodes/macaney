@@ -57,8 +57,9 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-400">Contact Info</h4>
             <div className="text-sm text-stone-300 space-y-1.5">
               <p className="font-medium text-white">Get in Touch</p>
-              <p>Email: chiamaka@macaneysolutions.com</p>
-              <p>WhatsApp: <a href={siteConfig.links.whatsappSupport} target="_blank" rel="noopener noreferrer" className="transition hover:text-white">+2348101126434</a></p>
+              <p>Email: <a href="mailto:Macaneysustainablesolutions@gmail.com" className="transition hover:text-white">Macaneysustainablesolutions@gmail.com</a></p>
+              <p>Email: <a href="mailto:Chiamaka@macaneysolutions.com" className="transition hover:text-white">Chiamaka@macaneysolutions.com</a></p>
+              <p>WhatsApp: <a href={siteConfig.links.whatsappSupport} target="_blank" rel="noopener noreferrer" className="transition hover:text-white">+234 810 112 6434</a></p>
             </div>
           </div>
 
