@@ -11,6 +11,7 @@ const fieldClass = 'w-full rounded-xl border border-stone-200 bg-stone-50 px-4 p
 
 export default function ConsultationForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [form, setForm] = useState({ name: '', email: '', phone: '', project: '', message: '' });
 
   useEffect(() => {
@@ -25,14 +26,19 @@ export default function ConsultationForm() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus('loading');
+    setErrorMessage('');
     try {
       const response = await fetch('/api/leads', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ full_name: form.name, email: form.email, phone_number: form.phone, country: 'Not provided', state: 'Not provided', hives_count: 'Not provided', project: form.project, message: form.message, source: 'contact-consultation', medium: 'website', campaign: 'direct' }),
       });
-      if (!response.ok) throw new Error();
+      const result = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(result?.error || 'We could not send your request. Please try again or email us directly.');
       setStatus('success');
-    } catch { setStatus('error'); }
+    } catch (error) {
+      setStatus('error');
+      if (error instanceof Error) setErrorMessage(error.message);
+    }
   }
 
   if (status === 'success') return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="flex min-h-[33rem] flex-col items-center justify-center rounded-[1.75rem] bg-emerald-950 p-8 text-center text-white"><span className="flex size-14 items-center justify-center rounded-full bg-emerald-800 text-amber-300"><CheckCircle2 className="size-7" /></span><h2 className="mt-6 font-serif text-3xl font-bold">Request received.</h2><p className="mt-3 max-w-sm leading-7 text-emerald-100">Thank you for reaching out. Our team will review your request and get back to you shortly.</p><button type="button" onClick={() => setStatus('idle')} className="mt-8 text-sm font-bold text-amber-300 transition hover:text-amber-200">Send another request</button></motion.div>;
@@ -45,7 +51,7 @@ export default function ConsultationForm() {
       <label className="relative block"><span className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-stone-600">What can we help with?</span><select required value={form.project} onChange={(e) => setForm({ ...form, project: e.target.value })} className={`${fieldClass} appearance-none pr-10`}><option value="" disabled>Select a project</option>{PROJECTS.map((project) => <option key={project} value={project}>{project}</option>)}</select><ChevronDown className="pointer-events-none absolute bottom-3.5 right-4 size-5 text-emerald-800" /></label>
       <label className="block"><span className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-stone-600">Special request <span className="normal-case tracking-normal text-stone-400">(optional)</span></span><textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={4} className={`${fieldClass} resize-none`} placeholder="A few details about your goals, location, or timeline…" /></label>
     </div>
-    {status === 'error' && <p className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">We could not send your request. Please try again or email us directly.</p>}
+    {status === 'error' && <p role="alert" className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{errorMessage || 'We could not send your request. Please try again or email us directly.'}</p>}
     <button disabled={status === 'loading'} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-800 px-5 py-4 text-sm font-bold text-white shadow-lg shadow-emerald-900/15 transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 disabled:cursor-wait disabled:bg-emerald-400"><span>{status === 'loading' ? 'Sending request…' : 'Request a consultation'}</span><Send className="size-4" /></button>
   </motion.form>;
 }
