@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { LeadForm } from '@/components/free-ebook/LeadForm';
 import { siteConfig } from '@/config/site';
 
@@ -111,6 +111,16 @@ export function HeroTwo() {
             </div>
 
           </div>
+        </div>
+
+        <div className="flex justify-center py-8 sm:py-10">
+          <Link
+            href="/free-ebook"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-emerald-800 px-6 py-3 text-center text-sm font-bold text-emerald-900 transition-colors hover:bg-emerald-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+          >
+            Check out The Beginner&apos;s Guide to Beekeeping
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
 
       </div>
