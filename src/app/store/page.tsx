@@ -37,7 +37,7 @@ export default function StorePage() {
   };
 
   return (
-    <main className="max-w-full overflow-x-clip bg-white pt-20 text-stone-900">
+    <main className="max-w-full overflow-x-clip bg-white pt-16 text-stone-900 sm:pt-20">
       {!isShopPage && <>
         <section className="relative isolate overflow-hidden border-b border-emerald-900 bg-emerald-950 px-4 py-10 text-white sm:px-6 sm:py-16 lg:px-8" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px), radial-gradient(circle at 85% 80%, rgba(245,158,11,0.20), transparent 30%)', backgroundSize: '54px 54px, 54px 54px, auto' }}>
           <div className="absolute inset-0 -z-10 bg-gradient-to-br from-emerald-950 via-emerald-950/90 to-stone-950/80" />
@@ -57,7 +57,7 @@ export default function StorePage() {
               </div>
               <div className="relative mx-auto w-full max-w-xl pb-5 pt-2 lg:pb-10">
                 <div className="relative aspect-[1.05] overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] border border-amber-300/20 bg-amber-400 shadow-2xl shadow-black/30 transition-transform duration-700 lg:rotate-[-2deg] lg:hover:rotate-0">
-                  <img src="/images/beeess.png" alt="Beekeepers inspecting hives at an apiary" className="size-full object-cover" />
+                  <video src="/images/d37a4941b485d6ab0b74c14d0388f17d.mp4" poster="/images/africa%20beekeper.jpeg" autoPlay muted loop playsInline aria-label="Beekeepers at an apiary" className="size-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5 border border-white/15 bg-emerald-950/80 p-4 backdrop-blur-md sm:bottom-7 sm:left-7 sm:right-auto sm:max-w-xs">
                     <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300">Now displaying</p>
